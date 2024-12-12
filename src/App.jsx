@@ -7,7 +7,7 @@ import Technology from "./component/Technology";
 
 export default function App() {
   return (
-   <div className="app bg-slate-950 w-screen text-white">
+   <div className="app bg-slate-950 z-0 w-screen text-white overflow-hidden">
           <Navbar/>
           <Hero/>
           <Pricing/>

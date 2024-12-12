@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+
+    const form = useRef();
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+      console.log(form.current)
+  
+      emailjs
+        .sendForm('service_0q335ss', 'template_95pr6y1', form.current, {
+          publicKey: 'u8uMMZsUUZ0IfvjR9',
+        })
+        .then(
+          () => {
+            console.log('SUCCESS!');
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+          },
+        );
+    }
+    
   return (
     <>
     <div className="my-6" id='contact'>
@@ -30,19 +52,21 @@ const Contact = () => {
                     </div>
                 </div>
               
-                <form className="ml-auo space-y-4">
-                    <input type='text'  placeholder='Name'
+                <form className="ml-auo space-y-4" ref={form} onSubmit={sendEmail}>
+                    <input type='text'  placeholder='Name'name='name'
                         className="w-full bg-slate-800 text-white rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
-                    <input type='email'  placeholder='Email'
+                    <input type='email'  placeholder='Email' name='email'
                         className="w-full bg-slate-800 text-white rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
-                    <input type='text'  placeholder='Subject'
+                    <input type='text'  placeholder='Subject' name='subject'
                         className="w-full bg-slate-800 text-white rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
-                    <textarea placeholder='Message' rows="6"
+                    <textarea placeholder='Message' rows="6" name='full_massage'
                         className="w-full bg-slate-800 text-white rounded-md px-4 border text-sm pt-2.5 outline-[#007bff]"></textarea>
-                    <button type='button'
+                    <button type='submit'
                         className="text-white bg-[#007bff] hover:bg-blue-600 font-semibold rounded-md text-sm px-4 py-2.5 w-full">Send</button>
                 </form>
             </div>
+    <div className="inset-0 absolute blur-[200px] left-[-15%] top-[380%] max-w-xs h-[357px] sm:max-w-md md:max-w-lg z-10" style={{ background: "linear-gradient(16.89deg, rgba(47, 56, 246, 0.537) 15.73%, rgba(240, 62, 225, 0.29) 50.74%, rgba(213, 6, 221, 0.259) 56.49%)" }}></div>
+
         </div>
     </>
   )

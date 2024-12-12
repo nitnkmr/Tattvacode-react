@@ -4,7 +4,7 @@ import png from "../assets/We-removebg-preview.png"
 const Hero = () => {
   return (
     <>
-      <div className="min-h-screen w-screen bg-slate-950">
+      <div className="min-h-screen w-screen z-0 bg-slate-950" id='home'>
         <div className="mx-auto max-w-7xl pt-16 sm:pt-24">
           <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-12 lg:gap-8">
             <div className="px-6 sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:flex lg:items-center lg:text-left">
@@ -101,7 +101,7 @@ const Hero = () => {
               <div className="px-6 h-96 lg:h-100% w-full max-w-2xl col-span-6 flex items-center mx-auto">
                 <div style={{"width": "100%", "height": "100%"}}>
                   <div className='shadow' style={{"width": "100%", "height": "100%"}}>
-                    <img src={png} />
+                    <img src={png} className='z-30' />
                
                   </div>
                 </div>
@@ -109,7 +109,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="absolute inset-0 m-auto max-w-xs h-[357px] blur-[118px] sm:max-w-md md:max-w-lg" style={{ background: "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11) 15.73%, rgba(14, 165, 233, 0.41) 15.74%, rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4) 115.91%)" }}></div>
+        <div className="inset-0 absolute blur-[80px] left-[80%] top-[-10%] max-w-xs h-[357px] sm:max-w-md md:max-w-lg z-10" style={{ background: "linear-gradient(16.89deg, rgba(47, 56, 246, 0.537) 15.73%, rgba(240, 62, 225, 0.29) 50.74%, rgba(213, 6, 221, 0.259) 56.49%)" }}></div>
       </div>
     </>
   )

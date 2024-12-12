@@ -44,6 +44,7 @@ const Technology = () => {
                                 className=""
                             />
                     </div>
+                    <div className="inset-0 absolute blur-[120px] left-[85%] top-[260%] max-w-xs h-[357px] sm:max-w-md md:max-w-lg z-10" style={{ background: "linear-gradient(16.89deg, rgba(47, 56, 246, 0.537) 15.73%, rgba(240, 62, 225, 0.29) 50.74%, rgba(213, 6, 221, 0.259) 56.49%)" }}></div>
                 </div>
             </div>
         </>
