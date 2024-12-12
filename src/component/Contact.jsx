@@ -1,13 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+    const [pending, setPending] = useState(false)
+    const [error, setError] = useState("")
 
     const form = useRef();
 
     const sendEmail = (e) => {
       e.preventDefault();
       console.log(form.current)
+      setPending(true)
   
       emailjs
         .sendForm('service_0q335ss', 'template_95pr6y1', form.current, {
@@ -16,9 +19,15 @@ const Contact = () => {
         .then(
           () => {
             console.log('SUCCESS!');
+            
+            setTimeout(()=>{
+                setPending(false)
+            },1000)
           },
           (error) => {
             console.log('FAILED...', error.text);
+            setPending(false)
+            setError(error.text)
           },
         );
     }
@@ -62,7 +71,8 @@ const Contact = () => {
                     <textarea placeholder='Message' rows="6" name='full_massage'
                         className="w-full bg-slate-800 text-white rounded-md px-4 border text-sm pt-2.5 outline-[#007bff]"></textarea>
                     <button type='submit'
-                        className="text-white bg-[#007bff] hover:bg-blue-600 font-semibold rounded-md text-sm px-4 py-2.5 w-full">Send</button>
+                        className="text-white bg-[#007bff] hover:bg-blue-600 font-semibold rounded-md text-sm px-4 py-2.5 w-full">{pending?"Sending..":"Send"}</button>
+                        <p className='text-red-500 text-xs'>{error.length>0?error:""}</p>
                 </form>
             </div>
     <div className="inset-0 absolute blur-[200px] left-[-15%] top-[380%] max-w-xs h-[357px] sm:max-w-md md:max-w-lg z-10" style={{ background: "linear-gradient(16.89deg, rgba(47, 56, 246, 0.537) 15.73%, rgba(240, 62, 225, 0.29) 50.74%, rgba(213, 6, 221, 0.259) 56.49%)" }}></div>
