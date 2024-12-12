@@ -1,15 +1,16 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import Popup from './Popup';
 
 const Contact = () => {
     const [pending, setPending] = useState(false)
+    const [popUp, setPopUp] = useState(false)
     const [error, setError] = useState("")
 
     const form = useRef();
 
     const sendEmail = (e) => {
       e.preventDefault();
-      console.log(form.current)
       setPending(true)
   
       emailjs
@@ -19,6 +20,7 @@ const Contact = () => {
         .then(
           () => {
             console.log('SUCCESS!');
+            setPopUp(true)
             
             setTimeout(()=>{
                 setPending(false)
@@ -62,18 +64,19 @@ const Contact = () => {
                 </div>
               
                 <form className="ml-auo space-y-4" ref={form} onSubmit={sendEmail}>
-                    <input type='text'  placeholder='Name'name='name'
+                    <input type='text'  placeholder='Name'name='name'  required
                         className="w-full bg-slate-800 text-white rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
-                    <input type='email'  placeholder='Email' name='email'
+                    <input type='email'  placeholder='Email' name='email' required
                         className="w-full bg-slate-800 text-white rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
-                    <input type='text'  placeholder='Subject' name='subject'
+                    <input type='text'  placeholder='Subject' name='subject' required
                         className="w-full bg-slate-800 text-white rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
-                    <textarea placeholder='Message' rows="6" name='full_massage'
+                    <textarea placeholder='Message' rows="6" name='full_massage' required
                         className="w-full bg-slate-800 text-white rounded-md px-4 border text-sm pt-2.5 outline-[#007bff]"></textarea>
                     <button type='submit'
                         className="text-white bg-[#007bff] hover:bg-blue-600 font-semibold rounded-md text-sm px-4 py-2.5 w-full">{pending?"Sending..":"Send"}</button>
                         <p className='text-red-500 text-xs'>{error.length>0?error:""}</p>
                 </form>
+                        {popUp?<Popup setPopUp={setPopUp}/>:<></>}
             </div>
     <div className="inset-0 absolute blur-[200px] left-[-15%] top-[380%] max-w-xs h-[357px] sm:max-w-md md:max-w-lg z-10" style={{ background: "linear-gradient(16.89deg, rgba(47, 56, 246, 0.537) 15.73%, rgba(240, 62, 225, 0.29) 50.74%, rgba(213, 6, 221, 0.259) 56.49%)" }}></div>
 
