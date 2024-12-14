@@ -9,7 +9,7 @@ import Testimonial from "./component/Testimonial";
 
 export default function App() {
   return (
-   <div className="app bg-slate-950 z-0 w-screen text-white overflow-hidden">
+   <div className="app bg-slate-950 z-0 w-screen text-white">
           <Navbar/>
           <Hero/>
           <Pricing/>

@@ -9,7 +9,7 @@ const Navbar = () => {
 
 
 
-            <header className="backdrop-blur-md bg-transparent justify-between w-[100vw] flex-col z-40 fixed top-0 md:flex-row shadow-lg flex">
+            <header className="backdrop-blur-md bg-transparent justify-between w-[100vw] flex-col z-40 sticky top-0 md:flex-row shadow-lg flex">
                 <AnchorLink href="#home" className="flex-shrink-0 flex items-center justify-center mx-4 lg:mx-6 xl:mx-8">
                     <img className="h-16 m-2" src={gitlogo} />
                 </AnchorLink>
